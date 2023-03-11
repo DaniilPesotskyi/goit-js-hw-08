@@ -23,16 +23,21 @@ function onFormRefInput(e) {
 }
 
 function onSubmitForm(e) {
-    e.preventDefault
-    localStorage.removeItem(STORAGE_KEY)
+    e.preventDefault()
+
+    if (formRefs.email.value === "" || formRefs.message === "") {
+        alert("Fill all fields!!!")
+    } else {
+        formData = {}
+        e.currentTarget.reset()
+        localStorage.removeItem(STORAGE_KEY)
+    }
 }
 
 function fillForm() {
     localeFormData = JSON.parse(localStorage.getItem(STORAGE_KEY))
 
     if(localeFormData) {
-        console.log(localeFormData)
-
         if(localeFormData.email) {
             formRefs.email.value = localeFormData.email
         }
