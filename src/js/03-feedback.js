@@ -25,28 +25,23 @@ function onSubmitForm(e) {
     e.preventDefault()
     console.log('Before Reset', formData)
 
-    if (formRefs.email.value === "" || formRefs.message === "") {
+    if (formRefs.email.value === "" || formRefs.message.value === "") {
         alert("Fill all fields!!!")
     } else {
         formData = {}
         e.currentTarget.reset()
         localStorage.removeItem(STORAGE_KEY)
     }
-
-    console.log('After Reset', formData)
 }
 
 function fillForm() {
     const localeFormData = JSON.parse(localStorage.getItem(STORAGE_KEY))
 
-    if(localeFormData) {
-        if(localeFormData.email) {
-            formRefs.email.value = localeFormData.email
-        }
-
-        if(localeFormData.message) {
-            formRefs.message.value = localeFormData.message
+    if (localeFormData) {
+        formData = localeFormData;
+    
+        for (const key in formData) {
+            feedbackFormRef.elements[key].value = formData[key];
         }
     }
-    
 }
