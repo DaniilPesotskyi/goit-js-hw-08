@@ -35,7 +35,7 @@ function onSubmitForm(e) {
 }
 
 function fillForm() {
-    localeFormData = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    const localeFormData = JSON.parse(localStorage.getItem(STORAGE_KEY))
 
     if(localeFormData) {
         if(localeFormData.email) {
