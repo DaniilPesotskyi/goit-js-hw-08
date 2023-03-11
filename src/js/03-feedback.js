@@ -18,12 +18,12 @@ fillForm()
 
 function onFormRefInput(e) {
     formData[e.target.name] = e.target.value
-
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
 }
 
 function onSubmitForm(e) {
     e.preventDefault()
+    console.log('Before Reset', formData)
 
     if (formRefs.email.value === "" || formRefs.message === "") {
         alert("Fill all fields!!!")
@@ -32,6 +32,8 @@ function onSubmitForm(e) {
         e.currentTarget.reset()
         localStorage.removeItem(STORAGE_KEY)
     }
+
+    console.log('After Reset', formData)
 }
 
 function fillForm() {
